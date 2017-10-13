@@ -21,7 +21,7 @@
 
     <nav class="actions">
       <div class="menu JS-topbarMenuHandler">
-        {# <a class="link">Fale conosco</a> #}
+          <a class="link JS-openSidebar" data-sidebar-content="contact">Fale conosco</a>
         {% if user.is_authenticated %}
           <a class="link JS-openSidebar" data-sidebar-content="profile">Menu</a>
         {% else %}
@@ -39,6 +39,55 @@
   <div class="stick">
     <div class="closewrapper">
       <button class="edem-close-button JS-closeSidebar"></button>
+    </div>
+
+    <div class="content JS-sidebarContent JS-contactContent">
+      <h1 class="header">Fale conosco</h1>
+
+      {% if user.is_authenticated  %}
+        <p class="info">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates, quae obcaecati assumenda eaque!
+        </p>
+
+        <form class="access JS-contactForm">
+          <div class="form-field">
+            <textarea class="input JS-formInput" id="id_password" name="password" type="password" required></textarea>
+            <label class="label" for="id_password"><span class="labeltext">Sua mensagem</span></label>
+            <p class="error JS-inputError" data-input-name="password" hidden></p>
+          </div>
+
+          <button class="edem-button">Enviar</button>
+        </form>
+
+      {% else %}
+
+        <p class="info">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates, quae obcaecati assumenda eaque!
+        </p>
+
+        <form class="access JS-contactForm">
+          <div class="form-field">
+            <input class="input JS-formInput" id="id_username" name="username" required>
+            <label class="label" for="id_username"><span class="labeltext">Nome</span></label>
+            <p class="error JS-inputError" data-input-name="username" hidden></p>
+          </div>
+
+          <div class="form-field">
+            <input class="input JS-formInput" id="id_password" name="password" type="email" required>
+            <label class="label" for="id_password"><span class="labeltext">Email</span></label>
+            <p class="error JS-inputError" data-input-name="password" hidden></p>
+          </div>
+
+          <div class="form-field">
+            <textarea class="input JS-formInput" id="id_password" name="password" type="password" required></textarea>
+            <label class="label" for="id_password"><span class="labeltext">Sua mensagem</span></label>
+            <p class="error JS-inputError" data-input-name="password" hidden></p>
+          </div>
+
+          <button class="edem-button">Enviar</button>
+        </form>
+      {% endif %}
+
     </div>
 
     {% if user.is_authenticated %}
