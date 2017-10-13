@@ -1,12 +1,13 @@
 .form-field {
   $input-height: 2 * $base-unit;
+  $input-label-height: 1 * $base-unit;
 
   position: relative;
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  padding-top: $base-unit;
-  margin-bottom: 0.5 * $base-unit;
+  padding-top: $input-label-height;
+  margin-bottom: 0.5rem;
 
   > .input {
     flex: 1;
@@ -44,14 +45,22 @@
     }
   }
 
+  > textarea.input {
+    min-height: 7.25rem;
+    padding: 0.5rem;
+    line-height: 1.25rem;
+    resize: none;
+    overflow: hidden;
+  }
+
   > .label {
     position: absolute;
-    top: 1 * $base-unit;
+    top: $input-label-height;
     left: 0;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     width: 100%;
-    height: $input-height;
+    height: calc(100% - #{$input-label-height});
     padding: 0 0.5 * $base-unit;
     background-color: rgba($edem-color-accent, 0.3);
     color: rgba(#fff, 0.6);
@@ -75,6 +84,7 @@
 
     > .labeltext {
       line-height: 1 * $base-unit;
+      margin-top: 0.5 * $base-unit;
 
       @at-root .-filled#{&} {
         animation: slideOut 0.3s forwards;
