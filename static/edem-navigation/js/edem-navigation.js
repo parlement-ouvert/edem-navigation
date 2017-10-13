@@ -134,6 +134,12 @@ $('.JS-fieldActionPassword').on('mousedown', function(e){
   }
 });
 
+// Auto grow textarea form-fields
+$("textarea.input").on('input', function() {
+  $(this).css('height', '0px');
+  $(this).css('height', $(this).get(0).scrollHeight + 'px');
+});
+
 // Close error message
 $('.JS-closeAccessError').click(function(){
   $('.JS-accessErrorBox').attr('hidden', '');
