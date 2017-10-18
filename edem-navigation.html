@@ -12,18 +12,6 @@
 {% macro owner_name %}{% block edem_owner_name %}{% endblock %}{% endmacro %}
 {% macro recaptcha %}{% block edem_recaptcha %}{% endblock %}{% endmacro %}
 
-{# Remember to call these blocks in its proper places in your base template #}
-{% block edem_navigation_styles %}
-  {% compress css %}
-    <link rel="stylesheet" href="{% static 'edem-navigation/scss/edem.scss' %}" type="text/x-scss" />
-  {% endcompress %}
-{% endblock edem_navigation_styles %}
-
-{% block edem_navigation_js %}
-  <script type="text/javascript" src="{% static 'edem-navigation/js/vendor/ua-parser.min.js' %}"></script>
-  <script type="text/javascript" src="{% static 'edem-navigation/js/edem-navigation.js' %}"></script>
-{% endblock edem_navigation_js %}
-
 <div class="edem-topbar">
   <div class="stick">
     <a class="brand JS-topbarMenuHandler" href="{% use_macro root_url %}">
