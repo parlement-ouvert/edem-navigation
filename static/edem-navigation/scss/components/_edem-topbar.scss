@@ -2,6 +2,9 @@
   font-family: $font-family-main;
   min-height: $edem-topbar-height;
   width: 100%;
+  box-sizing: border-box;
+
+  * { box-sizing: inherit }
 
   > .stick {
     position: fixed;

@@ -4,6 +4,9 @@
   width: $edem-sidebar-width;
   left: 100%;
   top: $edem-topbar-height;
+  box-sizing: border-box;
+
+  * { box-sizing: inherit }
 
   @include bp-smallonly {
     font-size: 0.9em;
