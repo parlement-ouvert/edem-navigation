@@ -89,6 +89,7 @@
     > .info > .link {
       color: $edem-color-link;
       font-weight: 600;
+      text-decoration: none;
     }
 
     > .success {
@@ -144,6 +145,7 @@
       align-self: center;
       font-size: $font-size-centi;
       font-weight: 400;
+      text-decoration: none;
     }
   }
 }
