@@ -5,6 +5,15 @@
   align-items: center;
   width: 2 * $base-unit;
   height: 2 * $base-unit;
+  font: inherit;
+  appearance: none;
+  background-color: transparent;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  outline: none;
+  text-decoration: none;
+  cursor: pointer;
   opacity: 0.8;
 
   &::before { transform: rotate(45deg) }

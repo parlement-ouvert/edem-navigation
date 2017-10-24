@@ -1,12 +1,16 @@
 .edem-sidebar {
   font-family: $font-family-main;
+  font-size: $base-unit;
   position: absolute;
   width: $edem-sidebar-width;
   left: 100%;
   top: $edem-topbar-height;
+  box-sizing: border-box;
+
+  * { box-sizing: inherit }
 
   @include bp-smallonly {
-    font-size: 0.9em;
+    font-size: 0.9 * $base-unit;
   }
 
   > .stick {
@@ -86,6 +90,7 @@
     > .info > .link {
       color: $edem-color-link;
       font-weight: 600;
+      text-decoration: none;
     }
 
     > .success {
@@ -141,6 +146,7 @@
       align-self: center;
       font-size: $font-size-centi;
       font-weight: 400;
+      text-decoration: none;
     }
   }
 }
@@ -150,7 +156,7 @@ body.-sidebaropen {
   overflow: hidden;
   &::after {
     width: 100%;
-    height: 100%;
+    height: 100vh;
     opacity: 0.8;
     cursor: pointer;
     transition: opacity 0.3s 0s ease, width 0s 0s, height 0s 0s;

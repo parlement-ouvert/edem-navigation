@@ -1,7 +1,11 @@
 .edem-topbar {
   font-family: $font-family-main;
+  font-size: $base-unit;
   min-height: $edem-topbar-height;
   width: 100%;
+  box-sizing: border-box;
+
+  * { box-sizing: inherit }
 
   > .stick {
     position: fixed;
