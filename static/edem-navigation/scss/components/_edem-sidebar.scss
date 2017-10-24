@@ -1,5 +1,6 @@
 .edem-sidebar {
   font-family: $font-family-main;
+  font-size: $base-unit;
   position: absolute;
   width: $edem-sidebar-width;
   left: 100%;
@@ -9,7 +10,7 @@
   * { box-sizing: inherit }
 
   @include bp-smallonly {
-    font-size: 0.9em;
+    font-size: 0.9 * $base-unit;
   }
 
   > .stick {
