@@ -1,3 +1,20 @@
+function closeEdemSidebar() {
+  $('.JS-openSidebar').removeClass('-active');
+  $('body').removeClass('-sidebaropen');
+}
+
+function openEdemSidebar(option) {
+  var contentSelector = '.JS-' + option + 'Content';
+  var linkSelector = '.JS-openSidebar[data-sidebar-content="' + option + '"]';
+
+  $('body').addClass('-sidebaropen');
+  $('.JS-sidebarContent').removeClass('-show');
+  $('.JS-openSidebar').removeClass('-active');
+  $(linkSelector).addClass('-active');
+  $(contentSelector).addClass('-show');
+  resizeRecaptcha();
+}
+
 function resizeRecaptcha() {
   if (!$('.JS-signupContent').hasClass('JS-signupFinished')){ // Only run if signup is not completed
     var accessWidth = $('.JS-signUpForm')[0].getBoundingClientRect().width; // Get value with decimals
@@ -38,49 +55,31 @@ function showSuccessSignupMessage() {
 
 // Resize reCAPTCHA on window resize
 $(window).resize(function(){
-  resizeRecaptcha();
+  if ($('body').hasClass('-sidebaropen')) {
+    resizeRecaptcha();
+  }
 });
 
-// eDemocracia open sidebar and its contents
+// Create and append to body an overlay div for when the sidebar is opened
+$('<div/>', {class: 'edem-overlay'}).appendTo('body');
+
+// Open sidebar via the topbar
 $('.JS-openSidebar').click(function() {
   if ($(this).hasClass('-active')) {
-    $(this).removeClass('-active');
-    $('body').removeClass('-sidebaropen');
-
+    closeEdemSidebar();
   } else {
-    $('body').addClass('-sidebaropen')
-    $('.JS-sidebarContent').removeClass('-show');
-    $('.JS-openSidebar').removeClass('-active');
-    $(this).addClass('-active');
-
-    if ($(this).hasClass('JS-showSignin')) {
-      $('.JS-signinContent').addClass('-show');
-
-    } else if ($(this).hasClass('JS-showSignup')) {
-      $('.JS-signupContent').addClass('-show');
-      resizeRecaptcha();
-
-    } else if ($(this).hasClass('JS-showProfile')) {
-      $('.JS-profileContent').addClass('-show');
-    }
+    openEdemSidebar($(this).data('sidebarContent'));
   }
 });
 
 // eDemocracia sidebar close button
 $('.JS-closeSidebar').click(function(){
-  $('.JS-openSidebar').removeClass('-active');
-  $('body').removeClass('-sidebaropen');
+  closeEdemSidebar();
 });
 
-// Close sidebar if click is outside of sidebar or topbar
-document.addEventListener('click', function(e) {
-  var onEdemCore = $(e.target).closest('.edem-topbar, .edem-sidebar').length;
-  var sidebarOpen = $('body').hasClass('-sidebaropen');
-
-  if (!onEdemCore && sidebarOpen ) {
-    $('.JS-openSidebar').removeClass('-active');
-    $('body').removeClass('-sidebaropen');
-  }
+// Close sidebar if click on the overlay
+$('.edem-overlay').click(function(){
+  closeEdemSidebar();
 });
 
 // Detect when input is filled
@@ -195,3 +194,11 @@ $('.JS-signUpForm').submit(function(event) {
     });
   }
 });
+
+// XXX This should be exclusively on Audiencias Plugin whenever is possible
+if (location.href.match(/audiencias/)) {
+  $(document).on('click', 'a[href^="/home/?next="]', function(e){
+    e.preventDefault();
+    openEdemSidebar('signin');
+  });
+}
