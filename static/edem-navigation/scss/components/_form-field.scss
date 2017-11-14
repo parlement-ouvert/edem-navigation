@@ -7,7 +7,7 @@
   align-items: center;
   flex-wrap: wrap;
   padding-top: $input-label-height;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.5 * $base-unit;
 
   > .input {
     flex: 1;
@@ -46,9 +46,9 @@
   }
 
   > textarea.input {
-    min-height: 7.25rem;
-    padding: 0.5rem;
-    line-height: 1.25rem;
+    min-height: 7.25 * $base-unit;
+    padding: 0.5 * $base-unit;
+    line-height: 1.25 * $base-unit;
     resize: none;
     overflow: hidden;
   }
