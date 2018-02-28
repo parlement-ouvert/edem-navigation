@@ -5,6 +5,7 @@
 {% macro google_url %}{% block edem_google_url %}{% endblock %}{% endmacro %}
 {% macro profile_url %}{% block edem_profile_url %}{% endblock %}{% endmacro %}
 {% macro logout_url %}{% block edem_logout_url %}{% endblock %}{% endmacro %}
+{% macro password_reset_url %}{% block edem_password_reset_url %}{% endblock %}{% endmacro %}
 {% macro root_url %}{% block edem_root_url %}{% endblock %}{% endmacro %}
 {% macro tos_url %}{% block edem_tos_url %}{% endblock %}{% endmacro %}
 {% macro avatar %}{% block edem_avatar %}{% endblock %}{% endmacro %}
@@ -86,7 +87,7 @@
         </form>
 
 
-        <a class="link" href="/account/password-reset">Esqueceu sua senha?</a>
+        <a class="link" href="{% use_macro password_reset_url %}">Esqueceu sua senha?</a>
       </div>
 
       <div class="content JS-sidebarContent JS-signupContent">
