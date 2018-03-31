@@ -12,7 +12,7 @@ function openEdemSidebar(option) {
   $('.JS-openSidebar').removeClass('-active');
   $(linkSelector).addClass('-active');
   $(contentSelector).addClass('-show');
-  resizeRecaptcha();
+  // resizeRecaptcha();
 }
 
 function resizeRecaptcha() {
@@ -55,9 +55,9 @@ function showSuccessSignupMessage() {
 
 // Resize reCAPTCHA on window resize
 $(window).resize(function(){
-  if ($('body').hasClass('-sidebaropen')) {
-    resizeRecaptcha();
-  }
+  // if ($('body').hasClass('-sidebaropen')) {
+  //   resizeRecaptcha();
+  // }
 });
 
 // Create and append to body an overlay div for when the sidebar is opened
@@ -185,10 +185,11 @@ $('.JS-signUpForm').submit(function(event) {
   var signUpForm = $(this);
   var submitButton = $('.JS-signUpForm .JS-sendForm');
 
-  if (grecaptcha.getResponse() == "") {
-    showError("Por favor preencha o reCAPTCHA.");
+  // if (grecaptcha.getResponse() == "") {
+  //   showError("Por favor preencha o reCAPTCHA.");
 
-  } else if (signUpForm.hasClass('JS-submitting')) {
+  // } else
+  if (signUpForm.hasClass('JS-submitting')) {
     return false;
 
   } else {
@@ -208,8 +209,8 @@ $('.JS-signUpForm').submit(function(event) {
         signUpForm.removeClass('JS-submitting');
         submitButton.removeClass('-loading');
 
-        grecaptcha.reset();
-        $("#g-recaptcha-response").val("");
+        // grecaptcha.reset();
+        // $("#g-recaptcha-response").val("");
         if (jqXRH.status == 0) {
           showError('Verifique sua conexão com a internet.');
         } else if (jqXRH.status == 400) {
